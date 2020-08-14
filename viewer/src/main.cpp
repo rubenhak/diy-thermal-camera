@@ -3,6 +3,7 @@
 #include <QMutex>
 #include <QMessageBox>
 #include <QScreen>
+#include <QDesktopWidget>
 
 #include <QColor>
 #include <QLabel>
@@ -107,13 +108,16 @@ int main( int argc, char **argv )
 	// int height = screenGeometry.height();
 	// int width = screenGeometry.width();
 
+	QDesktopWidget *desktop = QApplication::desktop();
+	QRect screenGeometry = desktop->screenGeometry();
+	// QRect screenGeometry = QDesktopWidget::screenGeometry();
 	// QRect screenGeometry = QApplication::desktop()->screenGeometry();
 	// height = rec.height();
 	// width = rec.width();
 	
 	QWidget *myWidget = new QWidget;
-	myWidget->setGeometry(400, 300, 340, 290);
-	// myWidget->setGeometry(screenGeometry);
+	// myWidget->setGeometry(400, 300, 340, 290);
+	myWidget->setGeometry(screenGeometry);
 
 
 	//create an image placeholder for myLabel
