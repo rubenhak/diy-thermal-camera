@@ -105,6 +105,10 @@ int main( int argc, char **argv )
 	QRect  screenGeometry = screen->geometry();
 	// int height = screenGeometry.height();
 	// int width = screenGeometry.width();
+
+	// QRect screenGeometry = QApplication::desktop()->screenGeometry();
+	// height = rec.height();
+	// width = rec.width();
 	
 	QWidget *myWidget = new QWidget;
 	// RRR: myWidget->setGeometry(400, 300, 340, 290);
