@@ -156,9 +156,9 @@ int main( int argc, char **argv )
 	QObject::connect(button1, SIGNAL(clicked()), thread, SLOT(performFFC()));
 	thread->start();
 	
-	myWidget->show();
+	// myWidget->show();
 	// myWidget->setWindowState(Qt::WindowFullScreen);
-	// myWidget->showFullScreen();
+	myWidget->showFullScreen();
 
 
 	return a.exec();
