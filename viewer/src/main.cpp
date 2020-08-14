@@ -18,6 +18,7 @@ void printUsage(char *cmd) {
         char *cmdname = basename(cmd);
 	printf("Usage: %s [OPTION]...\n"
                " -h      display this help and exit\n"
+               " -d x    SPI device (0-1)\n"
                " -cm x   select colormap\n"
                "           1 : rainbow\n"
                "           2 : grayscale\n"
@@ -35,7 +36,7 @@ void printUsage(char *cmd) {
                " -max x  override maximum value for scaling (0 - 65535)\n"
                "           [default] automatic scaling range adjustment\n"
                "           e.g. -max 32000\n"
-               " -d x    log level (0-255)\n"
+               " -l x    log level (0-255)\n"
                "", cmdname, cmdname);
 	return;
 }
@@ -54,7 +55,7 @@ int main( int argc, char **argv )
 			printUsage(argv[0]);
 			exit(0);
 		}
-		else if (strcmp(argv[i], "-d") == 0) {
+		else if (strcmp(argv[i], "-l") == 0) {
 			int val = 3;
 			if ((i + 1 != argc) && (strncmp(argv[i + 1], "-", 1) != 0)) {
 				val = std::atoi(argv[i + 1]);
@@ -68,6 +69,13 @@ int main( int argc, char **argv )
 			int val = std::atoi(argv[i + 1]);
 			if ((val == 1) || (val == 2)) {
 				typeColormap = val;
+				i++;
+			}
+		}
+		else if ((strcmp(argv[i], "-d") == 0) && (i + 1 != argc)) {
+			int val = std::atoi(argv[i + 1]);
+			if ((val == 0) || (val == 1)) {
+				deviceId = val;
 				i++;
 			}
 		}
@@ -100,6 +108,8 @@ int main( int argc, char **argv )
 			}
 		}
 	}
+
+	printf("Selected SPI Device: %d\n", deviceId);
 
 	//create the app
 	QApplication a( argc, argv );
