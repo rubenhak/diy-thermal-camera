@@ -143,6 +143,7 @@ int main( int argc, char **argv )
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly
 	LeptonThread *thread = new LeptonThread();
+	thread->deviceId(1);
 	thread->setLogLevel(loglevel);
 	thread->useColormap(typeColormap);
 	thread->useLepton(typeLepton);

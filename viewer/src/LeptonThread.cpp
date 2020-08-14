@@ -14,6 +14,8 @@
 
 LeptonThread::LeptonThread() : QThread()
 {
+	spi_device = 0;
+
 	//
 	loglevel = 0;
 
@@ -38,6 +40,11 @@ LeptonThread::LeptonThread() : QThread()
 }
 
 LeptonThread::~LeptonThread() {
+}
+
+void LeptonThread::deviceId(int id)
+{
+	spi_device = id;
 }
 
 void LeptonThread::setLogLevel(uint16_t newLoglevel)
@@ -119,7 +126,7 @@ void LeptonThread::run()
 	uint16_t n_zero_value_drop_frame = 0;
 
 	//open spi port
-	SpiOpenPort(0, spiSpeed);
+	SpiOpenPort(spi_device, spiSpeed);
 
 	while(true) {
 
@@ -142,7 +149,7 @@ void LeptonThread::run()
 					n_wrong_segment = 0;
 					n_zero_value_drop_frame = 0;
 					usleep(750000);
-					SpiOpenPort(0, spiSpeed);
+					SpiOpenPort(spi_device, spiSpeed);
 				}
 				continue;
 			}
