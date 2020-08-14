@@ -100,9 +100,16 @@ int main( int argc, char **argv )
 
 	//create the app
 	QApplication a( argc, argv );
+
+	QScreen *screen = QApplication::primaryScreen();
+	QRect  screenGeometry = screen->geometry();
+	// int height = screenGeometry.height();
+	// int width = screenGeometry.width();
 	
 	QWidget *myWidget = new QWidget;
-	myWidget->setGeometry(400, 300, 340, 290);
+	// RRR: myWidget->setGeometry(400, 300, 340, 290);
+	myWidget->setGeometry(screenGeometry);
+
 
 	//create an image placeholder for myLabel
 	//fill the top left corner with red, just bcuz
@@ -141,6 +148,9 @@ int main( int argc, char **argv )
 	thread->start();
 	
 	myWidget->show();
+	// myWidget->setWindowState(Qt::WindowFullScreen);
+	// myWidget->showFullScreen();
+
 
 	return a.exec();
 }
