@@ -109,7 +109,7 @@ int main( int argc, char **argv )
 	// int width = screenGeometry.width();
 
 	QDesktopWidget *desktop = QApplication::desktop();
-	QRect screenGeometry = desktop->screenGeometry();
+	QRect windowSize = desktop->screenGeometry();
 	// QRect screenGeometry = QDesktopWidget::screenGeometry();
 	// QRect screenGeometry = QApplication::desktop()->screenGeometry();
 	// height = rec.height();
@@ -117,7 +117,7 @@ int main( int argc, char **argv )
 	
 	QWidget *myWidget = new QWidget;
 	// myWidget->setGeometry(400, 300, 340, 290);
-	myWidget->setGeometry(screenGeometry);
+	myWidget->setGeometry(windowSize);
 
 
 	//create an image placeholder for myLabel
@@ -133,7 +133,7 @@ int main( int argc, char **argv )
 
 	//create a label, and set it's image to the placeholder
 	MyLabel myLabel(myWidget);
-	myLabel.setGeometry(10, 10, 320, 240);
+	myLabel.setGeometry(0, 0, windowSize.width(), windowSize.height());
 	myLabel.setPixmap(QPixmap::fromImage(myImage));
 
 	//create a FFC button
