@@ -42,6 +42,7 @@ void printUsage(char *cmd) {
 
 int main( int argc, char **argv )
 {
+	int deviceId = 0;
 	int typeColormap = 3; // colormap_ironblack
 	int typeLepton = 2; // Lepton 2.x
 	int spiSpeed = 20; // SPI bus speed 20MHz
@@ -143,7 +144,7 @@ int main( int argc, char **argv )
 	//create a thread to gather SPI data
 	//when the thread emits updateImage, the label should update its image accordingly
 	LeptonThread *thread = new LeptonThread();
-	thread->deviceId(1);
+	thread->deviceId(deviceId);
 	thread->setLogLevel(loglevel);
 	thread->useColormap(typeColormap);
 	thread->useLepton(typeLepton);
