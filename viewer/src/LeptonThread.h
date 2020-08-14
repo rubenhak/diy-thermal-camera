@@ -22,6 +22,7 @@ public:
   LeptonThread();
   ~LeptonThread();
 
+  void deviceId(int);
   void setLogLevel(uint16_t);
   void useColormap(int);
   void useLepton(int);
@@ -41,6 +42,7 @@ signals:
 private:
 
   void log_message(uint16_t, std::string);
+	int spi_device;
   uint16_t loglevel;
   int typeColormap;
   const int *selectedColormap;
