@@ -2,6 +2,7 @@
 #include <QThread>
 #include <QMutex>
 #include <QMessageBox>
+#include <QScreen>
 
 #include <QColor>
 #include <QLabel>
@@ -101,8 +102,8 @@ int main( int argc, char **argv )
 	//create the app
 	QApplication a( argc, argv );
 
-	QScreen *screen = QApplication::primaryScreen();
-	QRect  screenGeometry = screen->geometry();
+	// QScreen *screen = QApplication::primaryScreen();
+	// QRect  screenGeometry = screen->geometry();
 	// int height = screenGeometry.height();
 	// int width = screenGeometry.width();
 
@@ -111,8 +112,8 @@ int main( int argc, char **argv )
 	// width = rec.width();
 	
 	QWidget *myWidget = new QWidget;
-	// RRR: myWidget->setGeometry(400, 300, 340, 290);
-	myWidget->setGeometry(screenGeometry);
+	myWidget->setGeometry(400, 300, 340, 290);
+	// myWidget->setGeometry(screenGeometry);
 
 
 	//create an image placeholder for myLabel
