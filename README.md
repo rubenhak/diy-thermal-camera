@@ -40,8 +40,8 @@ $ sudo ./MPI4008-show
 ```sh
 $ sudo apt-get install qt4-dev-tools
 $ sudo apt-get -y install git
-$ git clone https://github.com/groupgets/LeptonModule.gitcd LeptonModule
-$ cd raspberrypi_video
+$ git clone https://github.com/groupgets/LeptonModule.git
+$ cd LeptonModule/raspberrypi_video
 $ qmake && make
 ```
 
